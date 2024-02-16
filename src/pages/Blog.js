@@ -34,14 +34,18 @@ const Blog = () => {
         }
     }
 
+    const handleChange = (e) => {
+        setAuthor(e.target.value)
+    }
+
     return (
         <div className="blog-container">
             <Logo />
             <Navigation />
             <h1>Blog</h1>
 
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" placeholder="Nom" onChange={(e) => setAuthor(e.target.value)} value={author} />
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Nom" onChange={handleChange} value={author} />
                 <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} placeholder='Message' onChange={(e) => setContent(e.target.value)} value={content}></textarea>
                 {error && <p>Veuillez écrire un minimum de 140 caractères</p>}
                 <input type="submit" value="Envoyer" />
